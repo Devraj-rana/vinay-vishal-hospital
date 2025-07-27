@@ -8,8 +8,7 @@ import OurDoctorsSection from "./OurDoctorsSection";
 
 
 const Home = () => {
-  return (
-    <>
+  return (    <>
       <HospitalInfoSection />
       <OurServicesSection />
       <OurDoctorsSection />
