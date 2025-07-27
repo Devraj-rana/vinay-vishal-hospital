@@ -217,7 +217,7 @@ const HeroSection = () => {
       </motion.div>
 
       {/* Mobile Hero Content - Below Video */}
-      <div className="block md:hidden bg-gradient-to-b from-slate-900 to-slate-800 py-6 px-4">
+      <div className="block md:hidden bg-gradient-to-b from-slate-900 to-slate-800 py-6 px-4 -mt-50">
         <div className="text-center text-white max-w-lg mx-auto">
           {/* Trust Badge - Mobile */}
           <div className="inline-flex items-center bg-emerald-500/90 px-3 py-2 rounded-full mb-4">
