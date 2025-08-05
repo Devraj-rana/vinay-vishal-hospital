@@ -112,7 +112,7 @@ const InfoCards = () => {
                   }
                   return prev
                 })
-              }, index * 150)
+              }, index * 50)
             })
           } else {
             setVisibleCards([])
@@ -165,7 +165,7 @@ const InfoCards = () => {
           {cards.map(({ title, description, bgColor, borderColor, titleColor, textColor, linkColor, hoverShadow, icon }, index) => (
             <div
               key={`${animationKey}-${index}`}
-              className={`${bgColor} ${borderColor} rounded-2xl p-6 sm:p-8 lg:p-6 border-2 relative overflow-hidden group cursor-pointer transition-all duration-500 hover:scale-105 ${hoverShadow} hover:shadow-2xl hover:-translate-y-2 bg-white/80 backdrop-blur-sm
+              className={`${bgColor} ${borderColor} rounded-2xl p-6 sm:p-8 lg:p-6 border-2 relative overflow-hidden group cursor-pointer transition-all duration-500 hover:scale-105 ${hoverShadow} hover:shadow-2xl hover:-translate-y-2 bg-white/80 backdrop-blur-sm touch-manipulation min-h-[280px] sm:min-h-[320px]
                 ${visibleCards.includes(index) 
                   ? 'opacity-100 translate-y-0 scale-100' 
                   : 'opacity-0 translate-y-8 scale-95'
@@ -195,7 +195,7 @@ const InfoCards = () => {
               
               {/* Enhanced CTA button */}
               <button 
-                className={`text-sm sm:text-base flex items-center space-x-2 font-semibold transition-all duration-500 ${linkColor} hover:font-bold relative z-10 px-4 py-2 rounded-lg bg-white/50 hover:bg-white/80 ${visibleCards.includes(index) ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}
+                className={`text-sm sm:text-base flex items-center justify-center space-x-2 font-semibold transition-all duration-500 ${linkColor} hover:font-bold relative z-10 px-4 py-3 sm:py-2 rounded-lg bg-white/50 hover:bg-white/80 w-full sm:w-auto touch-manipulation min-h-[48px] ${visibleCards.includes(index) ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}
                 onClick={(e) => e.preventDefault()}
               >
                 <span className="group-hover:translate-x-1 transition-transform duration-300">Learn More</span>

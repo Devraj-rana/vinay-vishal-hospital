@@ -230,7 +230,7 @@ const TrackRecordSection = () => {
                   }
                   return prev;
                 });
-              }, index * 200);
+              }, index * 50);
             });
           } else {
             setVisibleElements([]);
@@ -270,17 +270,17 @@ const TrackRecordSection = () => {
         {/* Left Column */}
         <div className="flex-1 w-full">
           {/* Header */}
-          <p className={`text-blue-600 text-xs sm:text-sm font-semibold mb-2 text-center lg:text-left transition-all duration-700 ${getAnimationClass('header')}`}>
+          <p className={`text-blue-600 text-xs sm:text-sm font-semibold mb-2 text-center lg:text-left transition-all duration-200 ${getAnimationClass('header')}`}>
             YOUR HEALTH IS OUR TOP PRIORITY
           </p>
           
           {/* Title */}
-          <h2 className={`text-xl sm:text-2xl lg:text-3xl xl:text-4xl mb-4 sm:mb-6 max-w-lg text-center lg:text-left leading-tight transition-all duration-800 ${getAnimationClass('title')}`}>
+          <h2 className={`text-xl sm:text-2xl lg:text-3xl xl:text-4xl mb-4 sm:mb-6 max-w-lg text-center lg:text-left leading-tight transition-all duration-200 ${getAnimationClass('title')}`}>
             Our track record speaks for itself Many individuals have chosen our medical center.
           </h2>
           
           {/* Main Image */}
-          <div className={`flex justify-center lg:justify-start transition-all duration-900 ${getAnimationClass('image1')}`}>
+          <div className={`flex justify-center lg:justify-start transition-all duration-200 ${getAnimationClass('image1')}`}>
             <div className="relative group overflow-hidden rounded-3xl w-full max-w-lg">
               <Image
                 src="/test1.jpg"
@@ -295,7 +295,7 @@ const TrackRecordSection = () => {
           </div>
           
           {/* Testimonial */}
-          <blockquote className={`bg-purple-200 rounded-3xl p-4 sm:p-6 max-w-lg mx-auto lg:mx-0 text-gray-900 italic mb-4 sm:mb-6 shadow transition-all duration-1000 hover:shadow-xl hover:scale-105 hover:bg-purple-300 ${getAnimationClass('testimonial')}`}>
+          <blockquote className={`bg-purple-200 rounded-3xl p-4 sm:p-6 max-w-lg mx-auto lg:mx-0 text-gray-900 italic mb-4 sm:mb-6 shadow transition-all duration-200 hover:shadow-xl hover:scale-105 hover:bg-purple-300 ${getAnimationClass('testimonial')}`}>
             <p className="text-sm sm:text-base leading-relaxed">&quot;I had a great experience at this healthcare clinic. I was seen quickly, and the doctor was able to diagnose and treat my condition very patiently.&quot;</p>
             <footer className="mt-3 sm:mt-4 text-xs sm:text-sm font-semibold flex items-center space-x-2">
               <svg
@@ -317,7 +317,7 @@ const TrackRecordSection = () => {
         {/* Right Column */}
         <div className="flex-1 w-full flex flex-col items-center gap-6 sm:gap-8">
           {/* Google Rating */}
-          <div className={`bg-green-200 rounded-3xl px-4 sm:px-6 py-3 sm:py-4 text-center w-full max-w-xs shadow transition-all duration-700 hover:shadow-xl hover:scale-110 hover:bg-green-300 hover:-rotate-2 ${getAnimationClass('rating')}`}>
+          <div className={`bg-green-200 rounded-3xl px-4 sm:px-6 py-3 sm:py-4 text-center w-full max-w-xs shadow transition-all duration-200 hover:shadow-xl hover:scale-110 hover:bg-green-300 hover:-rotate-2 ${getAnimationClass('rating')}`}>
             <p className="text-xs uppercase tracking-widest text-gray-700">AVERAGE GOOGLE RATING</p>
             <div className="flex items-center justify-center space-x-2 mt-1">
               <svg
@@ -333,7 +333,7 @@ const TrackRecordSection = () => {
           </div>
 
           {/* Image with floating info boxes */}
-          <div className={`relative w-full flex justify-center transition-all duration-800 ${getAnimationClass('image2')}`}>
+          <div className={`relative w-full flex justify-center transition-all duration-200 ${getAnimationClass('image2')}`}>
             <div className="relative group overflow-hidden rounded-3xl w-full max-w-sm">
               <Image
                 src="/testl2.jpg"
@@ -347,18 +347,18 @@ const TrackRecordSection = () => {
             </div>
             
             {/* Floating Info Boxes */}
-            <div className={`absolute top-2 sm:top-3 left-2 sm:left-3 bg-purple-200 rounded-2xl px-2 sm:px-4 py-1.5 sm:py-2 text-center w-20 sm:w-28 shadow-lg transition-all duration-900 hover:shadow-xl hover:scale-110 hover:bg-purple-300 hover:rotate-3 ${getAnimationClass('floating1')}`}>
+            <div className={`absolute top-2 sm:top-3 left-2 sm:left-3 bg-purple-200 rounded-2xl px-2 sm:px-4 py-1.5 sm:py-2 text-center w-20 sm:w-28 shadow-lg transition-all duration-200 hover:shadow-xl hover:scale-110 hover:bg-purple-300 hover:rotate-3 ${getAnimationClass('floating1')}`}>
               <p className="text-lg sm:text-xl font-bold">22</p>
               <p className="text-xs uppercase tracking-widest">Different Sections</p>
             </div>
-            <div className={`absolute bottom-2 sm:bottom-3 right-2 sm:right-3 bg-green-200 rounded-2xl px-2 sm:px-4 py-1.5 sm:py-2 text-center w-20 sm:w-28 shadow-lg transition-all duration-1000 hover:shadow-xl hover:scale-110 hover:bg-green-300 hover:-rotate-3 ${getAnimationClass('floating2')}`}>
+            <div className={`absolute bottom-2 sm:bottom-3 right-2 sm:right-3 bg-green-200 rounded-2xl px-2 sm:px-4 py-1.5 sm:py-2 text-center w-20 sm:w-28 shadow-lg transition-all duration-200 hover:shadow-xl hover:scale-110 hover:bg-green-300 hover:-rotate-3 ${getAnimationClass('floating2')}`}>
               <p className="text-lg sm:text-xl font-bold">5K+</p>
               <p className="text-xs uppercase tracking-widest">Patient Reviews</p>
             </div>
           </div>
 
           {/* Info Box */}
-          <div className={`bg-gray-200 rounded-3xl px-4 sm:px-6 py-3 sm:py-4 w-full max-w-sm shadow transition-all duration-1100 hover:shadow-xl hover:scale-105 hover:bg-gray-300 group ${getAnimationClass('infobox')}`}>
+          <div className={`bg-gray-200 rounded-3xl px-4 sm:px-6 py-3 sm:py-4 w-full max-w-sm shadow transition-all duration-200 hover:shadow-xl hover:scale-105 hover:bg-gray-300 group ${getAnimationClass('infobox')}`}>
             <h3 className="font-semibold flex items-center space-x-2 mb-2 text-sm sm:text-base">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

@@ -41,7 +41,7 @@ const HospitalInfoSection = () => {
         variants={leftVariants}
         initial="hidden"
         animate={leftInView ? "visible" : "hidden"}
-        transition={{ duration: 1.2, ease: "easeOut" }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
         className="flex-1"
       >
         <div className="inline-flex items-center bg-blue-100 text-blue-800 px-4 py-2 rounded-full mb-6">
@@ -61,8 +61,8 @@ const HospitalInfoSection = () => {
           providing comprehensive healthcare services with cutting-edge technology and compassionate care.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-8 mb-8 max-w-2xl">
-          <ul className="flex-1 space-y-4">
+        <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 mb-8 max-w-2xl">
+          <ul className="flex-1 space-y-3 sm:space-y-4">
             {checklistLeft.map((item, idx) => (
               <li key={idx} className="flex items-center space-x-3">
                 <span className="inline-block bg-emerald-500 rounded-full p-2 flex-shrink-0 shadow-lg">
@@ -77,11 +77,11 @@ const HospitalInfoSection = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                   </svg>
                 </span>
-                <span className="text-slate-700 text-base font-medium">{item}</span>
+                <span className="text-slate-700 text-sm sm:text-base font-medium">{item}</span>
               </li>
             ))}
           </ul>
-          <ul className="flex-1 space-y-4">
+          <ul className="flex-1 space-y-3 sm:space-y-4">
             {checklistRight.map((item, idx) => (
               <li key={idx} className="flex items-center space-x-3">
                 <span className="inline-block bg-emerald-500 rounded-full p-2 flex-shrink-0 shadow-lg">
@@ -96,7 +96,7 @@ const HospitalInfoSection = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                   </svg>
                 </span>
-                <span className="text-slate-700 text-base font-medium">{item}</span>
+                <span className="text-slate-700 text-sm sm:text-base font-medium">{item}</span>
               </li>
             ))}
           </ul>
@@ -119,15 +119,15 @@ const HospitalInfoSection = () => {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4">
-          <button className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 py-4 rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 text-lg font-bold transform hover:scale-105 shadow-lg flex items-center gap-3 justify-center hover:shadow-xl">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <button className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-4 sm:px-8 sm:py-4 rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 text-base sm:text-lg font-bold transform hover:scale-105 shadow-lg flex items-center gap-3 justify-center hover:shadow-xl touch-manipulation min-h-[56px]">
+            <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
             </svg>
             Learn More About Us
           </button>
           
-          <button className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-600 hover:text-white transition-all duration-300 text-lg font-bold transform hover:scale-105 shadow-lg flex items-center gap-3 justify-center hover:shadow-xl">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <button className="border-2 border-blue-600 text-blue-600 px-6 py-4 sm:px-8 sm:py-4 rounded-xl hover:bg-blue-600 hover:text-white transition-all duration-300 text-base sm:text-lg font-bold transform hover:scale-105 shadow-lg flex items-center gap-3 justify-center hover:shadow-xl touch-manipulation min-h-[56px]">
+            <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
             </svg>
             Virtual Tour
@@ -141,7 +141,7 @@ const HospitalInfoSection = () => {
         variants={rightVariants}
         initial="hidden"
         animate={rightInView ? "visible" : "hidden"}
-        transition={{ duration: 1.2, ease: "easeOut" }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
         className="relative flex-1 flex flex-col items-center"
       >
         <div className="relative">

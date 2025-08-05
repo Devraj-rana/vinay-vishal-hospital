@@ -22,7 +22,7 @@ const HeroSection = () => {
   };
 
   // Counter animation function
-  const animateCounter = (target: number, key: 'patients' | 'doctors' | 'years', duration: number = 1500) => {
+  const animateCounter = (target: number, key: 'patients' | 'doctors' | 'years', duration: number = 500) => {
     const startTime = Date.now();
     const startValue = 0;
     
@@ -81,7 +81,7 @@ const HeroSection = () => {
                   }
                   return prev;
                 });
-              }, index * 200); // Reduced delay from 600ms to 200ms
+              }, index * 100); // Reduced delay from 200ms to 100ms
             });
           } else {
             // Reset animations when going out of view
@@ -116,10 +116,10 @@ const HeroSection = () => {
   return (
     <>
       <motion.div
-        className="relative w-full h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-screen overflow-hidden"
+        className="relative w-full h-[60vh] sm:h-[70vh] md:h-[80vh] lg:h-screen overflow-hidden"
         initial={{ opacity: 0, scale: 0.98 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, ease: "easeOut" }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
       >
         {/* Video */}
         <video
@@ -174,19 +174,19 @@ const HeroSection = () => {
               </p>
 
               {/* Enhanced CTAs */}
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8">
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-4 mb-6 sm:mb-8">
                 <a
                   href="tel:+917078599991"
-                  className="group bg-red-600 hover:bg-red-700 text-white px-4 py-3 sm:px-6 sm:py-3 md:px-8 md:py-4 rounded-lg font-semibold text-sm sm:text-base lg:text-lg transition-all duration-300 transform hover:scale-105 shadow-xl flex items-center justify-center touch-manipulation"
+                  className="group bg-red-600 hover:bg-red-700 text-white px-6 py-4 sm:px-6 sm:py-3 md:px-8 md:py-4 rounded-xl sm:rounded-lg font-semibold text-base sm:text-base lg:text-lg transition-all duration-300 transform hover:scale-105 shadow-xl flex items-center justify-center touch-manipulation min-h-[56px]"
                 >
-                  <svg className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 mr-2 sm:mr-3 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 sm:w-5 sm:h-5 lg:w-6 lg:h-6 mr-3 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
                   </svg>
                   <span className="whitespace-nowrap">Emergency: Call Now</span>
                 </a>
                 
-                <button className="group bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-3 sm:px-6 sm:py-3 md:px-8 md:py-4 rounded-lg font-semibold text-sm sm:text-base lg:text-lg transition-all duration-300 transform hover:scale-105 shadow-xl flex items-center justify-center touch-manipulation">
-                  <svg className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 mr-2 sm:mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <button className="group bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-4 sm:px-6 sm:py-3 md:px-8 md:py-4 rounded-xl sm:rounded-lg font-semibold text-base sm:text-base lg:text-lg transition-all duration-300 transform hover:scale-105 shadow-xl flex items-center justify-center touch-manipulation min-h-[56px]">
+                  <svg className="w-5 h-5 sm:w-5 sm:h-5 lg:w-6 lg:h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                   </svg>
                   <span className="whitespace-nowrap">Book Appointment</span>
@@ -220,8 +220,8 @@ const HeroSection = () => {
       </motion.div>
 
       {/* Mobile Hero Content - Below Video */}
-      <div className="block md:hidden bg-gradient-to-b from-slate-900 to-slate-800 pt-0 pb-6 px-4">
-        <div className="text-center text-white max-w-lg mx-auto">
+      <div className="block md:hidden bg-gradient-to-b from-slate-900 to-slate-800 py-6 px-4">
+        <div className="text-center text-white max-w-lg mx-auto space-y-6">
           {/* Trust Badge - Mobile */}
           <div className="inline-flex items-center bg-emerald-500/90 px-3 py-2 rounded-full mb-4">
             <svg className="w-4 h-4 mr-2 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -240,10 +240,10 @@ const HeroSection = () => {
           </p>
 
           {/* Mobile CTAs */}
-          <div className="flex flex-col gap-3 mb-4">
+          <div className="flex flex-col gap-4 mb-6">
             <a
               href="tel:+917078599991"
-              className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-300 transform hover:scale-105 shadow-xl flex items-center justify-center touch-manipulation"
+              className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-xl font-semibold text-base transition-all duration-300 transform active:scale-95 shadow-xl flex items-center justify-center touch-manipulation min-h-[56px]"
             >
               <svg className="w-5 h-5 mr-3 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
@@ -251,7 +251,7 @@ const HeroSection = () => {
               <span>Emergency: Call Now</span>
             </a>
             
-            <button className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-300 transform hover:scale-105 shadow-xl flex items-center justify-center touch-manipulation">
+            <button className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-xl font-semibold text-base transition-all duration-300 transform active:scale-95 shadow-xl flex items-center justify-center touch-manipulation min-h-[56px]">
               <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
               </svg>
@@ -260,30 +260,30 @@ const HeroSection = () => {
           </div>
 
           {/* Trust Indicators - Mobile Grid */}
-          <div className="grid grid-cols-2 gap-2 text-xs text-blue-200">
-            <div className="flex items-center justify-center bg-white/10 backdrop-blur-md px-2 py-2 rounded-lg border border-white/20">
-              <svg className="w-4 h-4 mr-1.5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
+          <div className="grid grid-cols-2 gap-3 text-sm text-blue-200">
+            <div className="flex items-center justify-center bg-white/10 backdrop-blur-md px-3 py-3 rounded-xl border border-white/20 min-h-[60px]">
+              <svg className="w-5 h-5 mr-2 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
               </svg>
-              <span>24/7 Care</span>
+              <span className="font-medium">24/7 Care</span>
             </div>
-            <div className="flex items-center justify-center bg-white/10 backdrop-blur-md px-2 py-2 rounded-lg border border-white/20">
-              <svg className="w-4 h-4 mr-1.5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
+            <div className="flex items-center justify-center bg-white/10 backdrop-blur-md px-3 py-3 rounded-xl border border-white/20 min-h-[60px]">
+              <svg className="w-5 h-5 mr-2 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
               </svg>
-              <span>15+ Years</span>
+              <span className="font-medium">15+ Years</span>
             </div>
-            <div className="flex items-center justify-center bg-white/10 backdrop-blur-md px-2 py-2 rounded-lg border border-white/20">
-              <svg className="w-4 h-4 mr-1.5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
+            <div className="flex items-center justify-center bg-white/10 backdrop-blur-md px-3 py-3 rounded-xl border border-white/20 min-h-[60px]">
+              <svg className="w-5 h-5 mr-2 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
               </svg>
-              <span>Expert Doctors</span>
+              <span className="font-medium">Expert Doctors</span>
             </div>
-            <div className="flex items-center justify-center bg-white/10 backdrop-blur-md px-2 py-2 rounded-lg border border-white/20">
-              <svg className="w-4 h-4 mr-1.5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
+            <div className="flex items-center justify-center bg-white/10 backdrop-blur-md px-3 py-3 rounded-xl border border-white/20 min-h-[60px]">
+              <svg className="w-5 h-5 mr-2 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
               </svg>
-              <span>Modern Tech</span>
+              <span className="font-medium">Modern Tech</span>
             </div>
           </div>
         </div>
@@ -392,8 +392,8 @@ const HeroSection = () => {
           </div>
 
           {/* Trust Indicators Section */}
-          <div className="mt-20 bg-white rounded-3xl p-8 shadow-xl">
-            <h3 className="text-2xl font-bold text-center text-slate-800 mb-8">Why Choose Vinay Vishal Hospital?</h3>
+          <div className="mt-20 bg-gradient-to-br from-blue-50 via-white to-blue-100 rounded-3xl p-8 shadow-xl border border-blue-100">
+            <h3 className="text-2xl font-bold text-center text-blue-900 mb-8">Why Choose Vinay Vishal Hospital?</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               <div className="text-center p-4">
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">

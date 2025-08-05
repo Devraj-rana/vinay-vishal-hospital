@@ -82,7 +82,7 @@ const OurDoctorsSection = () => {
                   }
                   return prev;
                 });
-              }, index * 150);
+              }, index * 50);
             });
           } else {
             setVisibleElements([]);
@@ -112,7 +112,7 @@ const OurDoctorsSection = () => {
     setTimeout(() => {
       setSelectedCategory(category);
       setFilterTransition(false);
-    }, 300);
+    }, 150);
   };
 
   const getAnimationClass = (elementName: string) => {

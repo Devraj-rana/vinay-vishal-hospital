@@ -38,14 +38,14 @@ export default function BackToTopButton() {
   return (
     <button
       onClick={scrollToTop}
-      className="fixed bottom-6 left-6 z-50 group
+      className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-50 group
                  bg-blue-600 hover:bg-blue-700 
-                 text-white p-3 rounded-full shadow-lg
+                 text-white p-3 sm:p-4 rounded-full shadow-lg
                  transition-all duration-300 ease-in-out
                  transform hover:scale-110 hover:shadow-xl
-                 touch-manipulation
-                 sm:p-4"
+                 touch-manipulation"
       aria-label="Back to top"
+      style={{ minHeight: '56px', minWidth: '56px' }}
     >
       <ChevronUp 
         className="w-5 h-5 sm:w-6 sm:h-6 
@@ -53,8 +53,8 @@ export default function BackToTopButton() {
                    group-hover:-translate-y-0.5" 
       />
       
-      {/* Tooltip */}
-      <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2
+      {/* Tooltip - Hidden on mobile */}
+      <span className="hidden sm:block absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2
                        bg-gray-800 text-white text-xs px-2 py-1 rounded
                        opacity-0 group-hover:opacity-100 transition-opacity duration-200
                        whitespace-nowrap pointer-events-none">

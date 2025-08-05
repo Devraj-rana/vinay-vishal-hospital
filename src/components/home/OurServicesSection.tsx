@@ -105,7 +105,7 @@ const containerVariants: Variants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.15,
+      staggerChildren: 0.05,
     },
   },
 };
@@ -116,7 +116,7 @@ const itemVariants: Variants = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.7,
+      duration: 0.3,
       ease: [0.22, 1, 0.36, 1],
     },
   },
@@ -164,7 +164,7 @@ const OurServicesSection = () => {
           {services.map(({ title, description, icon, bgColor, textColor, linkColor }, index) => (
             <motion.div
               key={index}
-              className={`${bgColor} rounded-2xl p-6 sm:p-8 text-left shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer border border-white/50 backdrop-blur-sm relative overflow-hidden group`}
+              className={`${bgColor} rounded-2xl p-6 sm:p-8 text-left shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer border border-white/50 backdrop-blur-sm relative overflow-hidden group touch-manipulation min-h-[200px] sm:min-h-[220px]`}
               variants={itemVariants}
               whileHover={{
                 y: -8,
