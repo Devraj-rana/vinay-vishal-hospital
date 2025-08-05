@@ -22,7 +22,7 @@ const HeroSection = () => {
   };
 
   // Counter animation function
-  const animateCounter = (target: number, key: 'patients' | 'doctors' | 'years', duration: number = 2000) => {
+  const animateCounter = (target: number, key: 'patients' | 'doctors' | 'years', duration: number = 1500) => {
     const startTime = Date.now();
     const startValue = 0;
     
@@ -60,28 +60,28 @@ const HeroSection = () => {
               years: 0
             });
             
-            // Animate elements in sequence with longer delays
+            // Animate elements in sequence with simple delays
             const elements = ['title', 'subtitle', 'buttons', 'stats'];
             elements.forEach((element, index) => {
               setTimeout(() => {
                 setVisibleElements(prev => {
                   if (!prev.includes(element)) {
-                    // Start counting animations when stats become visible - synchronized timing
+                    // Start counting animations when stats become visible - immediate timing
                     if (element === 'stats') {
-                      setTimeout(() => animateCounter(5000, 'patients', 2200), 300);
-                      setTimeout(() => animateCounter(25, 'doctors', 2200), 400);
-                      setTimeout(() => animateCounter(15, 'years', 2200), 500);
+                      animateCounter(5000, 'patients', 1500);
+                      animateCounter(25, 'doctors', 1500);
+                      animateCounter(15, 'years', 1500);
                     }
                     return [...prev, element];
                   } else if (element === 'stats') {
                     // Re-trigger counter animations even if stats are already visible
-                    setTimeout(() => animateCounter(5000, 'patients', 2200), 300);
-                    setTimeout(() => animateCounter(25, 'doctors', 2200), 400);
-                    setTimeout(() => animateCounter(15, 'years', 2200), 500);
+                    animateCounter(5000, 'patients', 1500);
+                    animateCounter(25, 'doctors', 1500);
+                    animateCounter(15, 'years', 1500);
                   }
                   return prev;
                 });
-              }, index * 600); // Increased delay from 200ms to 600ms
+              }, index * 200); // Reduced delay from 600ms to 200ms
             });
           } else {
             // Reset animations when going out of view
@@ -110,16 +110,16 @@ const HeroSection = () => {
   const getAnimationClass = (elementName: string) => {
     return visibleElements.includes(elementName) 
       ? 'opacity-100 translate-y-0 scale-100' 
-      : 'opacity-0 translate-y-12 scale-95';
+      : 'opacity-0 translate-y-8 scale-95';
   };
 
   return (
     <>
       <motion.div
         className="relative w-full h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-screen overflow-hidden"
-        initial={{ opacity: 0, scale: 0.95 }}
+        initial={{ opacity: 0, scale: 0.98 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
+        transition={{ duration: 1, ease: "easeOut" }}
       >
         {/* Video */}
         <video
@@ -135,6 +135,9 @@ const HeroSection = () => {
           controls={false}
           preload="metadata"
           poster="/test1.jpg"
+          onError={() => {
+            console.log('Video failed to load, using poster image');
+          }}
         >
           <source src="/HOspital trailer.mp4" type="video/mp4" />
           Your browser does not support the video tag.
@@ -161,10 +164,10 @@ const HeroSection = () => {
                 <span className="text-xs sm:text-sm font-semibold">Certified Healthcare Excellence</span>
               </div>
 
-              <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold leading-tight mb-4 sm:mb-6">
-                Your Health, Our
-                <span className="text-emerald-400 block">Priority</span>
-              </h1>
+            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight mb-4 sm:mb-6">
+              Your Health, Our
+              <span className="text-emerald-400 block">Priority</span>
+            </h1>
               
               <p className="text-sm sm:text-base md:text-lg lg:text-xl mb-6 sm:mb-8 text-blue-100 leading-relaxed">
                 Advanced medical care with compassion. 15+ years of trusted healthcare excellence serving our community.
@@ -217,7 +220,7 @@ const HeroSection = () => {
       </motion.div>
 
       {/* Mobile Hero Content - Below Video */}
-      <div className="block md:hidden bg-gradient-to-b from-slate-900 to-slate-800 py-6 px-4 -mt-50">
+      <div className="block md:hidden bg-gradient-to-b from-slate-900 to-slate-800 pt-0 pb-6 px-4">
         <div className="text-center text-white max-w-lg mx-auto">
           {/* Trust Badge - Mobile */}
           <div className="inline-flex items-center bg-emerald-500/90 px-3 py-2 rounded-full mb-4">
@@ -299,14 +302,14 @@ const HeroSection = () => {
             </div>
 
             <h2 
-              className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 sm:mb-8 leading-tight text-slate-800 transition-all duration-1200 ease-out ${getAnimationClass('title')}`}
+              className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 sm:mb-8 leading-tight text-slate-800 transition-all duration-1000 ease-out ${getAnimationClass('title')}`}
             >
               Comprehensive Healthcare
               <span className="text-blue-600 block mt-2">You Can Trust</span>
             </h2>
             
             <p 
-              className={`text-lg sm:text-xl md:text-2xl mb-12 text-slate-600 max-w-4xl mx-auto leading-relaxed transition-all duration-1400 ease-out ${getAnimationClass('subtitle')}`}
+              className={`text-base sm:text-lg md:text-xl lg:text-2xl mb-12 text-slate-600 max-w-4xl mx-auto leading-relaxed transition-all duration-1000 ease-out ${getAnimationClass('subtitle')}`}
             >
               Advanced medical technology combined with compassionate care to provide exceptional healthcare services for you and your family.
             </p>
@@ -314,7 +317,7 @@ const HeroSection = () => {
 
           {/* Enhanced Action Buttons */}
           <div 
-            className={`flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-20 transition-all duration-1600 ease-out ${getAnimationClass('buttons')}`}
+            className={`flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-20 transition-all duration-1000 ease-out ${getAnimationClass('buttons')}`}
           >
             <a 
               href="tel:+917078599991" 
@@ -346,44 +349,44 @@ const HeroSection = () => {
 
           {/* Enhanced Statistics with Medical Theme */}
           <div 
-            className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-center max-w-6xl mx-auto transition-all duration-1800 ease-out ${getAnimationClass('stats')}`}
+            className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 text-center max-w-6xl mx-auto transition-all duration-1000 ease-out ${getAnimationClass('stats')}`}
           >
-            <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:transform hover:-translate-y-2 border-l-4 border-blue-500">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-200 transition-colors duration-300">
-                <svg className="w-8 h-8 text-blue-600 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="group bg-white rounded-xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:-translate-y-1 border-l-4 border-blue-500">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-200 transition-colors duration-300">
+                <svg className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600 group-hover:scale-105 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
                 </svg>
               </div>
-              <div className="text-4xl sm:text-5xl font-bold text-blue-600 mb-2 group-hover:scale-110 transition-transform duration-300">
+              <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-blue-600 mb-2 group-hover:scale-105 transition-transform duration-300">
                 {countingNumbers.patients.toLocaleString()}+
               </div>
-              <div className="text-slate-700 font-semibold text-lg">Happy Patients Served</div>
+              <div className="text-slate-700 font-semibold text-base sm:text-lg">Happy Patients Served</div>
               <div className="text-slate-500 text-sm mt-1">Comprehensive care with excellence</div>
             </div>
 
-            <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:transform hover:-translate-y-2 border-l-4 border-emerald-500">
-              <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-emerald-200 transition-colors duration-300">
-                <svg className="w-8 h-8 text-emerald-600 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="group bg-white rounded-xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:-translate-y-1 border-l-4 border-emerald-500">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-emerald-200 transition-colors duration-300">
+                <svg className="w-6 h-6 sm:w-8 sm:h-8 text-emerald-600 group-hover:scale-105 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
                 </svg>
               </div>
-              <div className="text-4xl sm:text-5xl font-bold text-emerald-600 mb-2 group-hover:scale-110 transition-transform duration-300">
+              <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-emerald-600 mb-2 group-hover:scale-105 transition-transform duration-300">
                 {countingNumbers.doctors}+
               </div>
-              <div className="text-slate-700 font-semibold text-lg">Expert Specialists</div>
+              <div className="text-slate-700 font-semibold text-base sm:text-lg">Expert Specialists</div>
               <div className="text-slate-500 text-sm mt-1">Qualified & experienced professionals</div>
             </div>
 
-            <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:transform hover:-translate-y-2 border-l-4 border-amber-500 sm:col-span-2 lg:col-span-1">
-              <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-amber-200 transition-colors duration-300">
-                <svg className="w-8 h-8 text-amber-600 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="group bg-white rounded-xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:-translate-y-1 border-l-4 border-amber-500 sm:col-span-2 lg:col-span-1">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-amber-200 transition-colors duration-300">
+                <svg className="w-6 h-6 sm:w-8 sm:h-8 text-amber-600 group-hover:scale-105 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
               </div>
-              <div className="text-4xl sm:text-5xl font-bold text-amber-600 mb-2 group-hover:scale-110 transition-transform duration-300">
+              <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-amber-600 mb-2 group-hover:scale-105 transition-transform duration-300">
                 {countingNumbers.years}+
               </div>
-              <div className="text-slate-700 font-semibold text-lg">Years of Excellence</div>
+              <div className="text-slate-700 font-semibold text-base sm:text-lg">Years of Excellence</div>
               <div className="text-slate-500 text-sm mt-1">Trusted healthcare legacy</div>
             </div>
           </div>

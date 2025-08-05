@@ -1,78 +1,6 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-
-// Counter Animation Component
-const AnimatedCounter = ({ end, duration = 2000, suffix = "" }: { end: number; duration?: number; suffix?: string }) => {
-  const [count, setCount] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !isVisible) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    const element = document.getElementById(`counter-${end}-${suffix}`);
-    if (element) {
-      observer.observe(element);
-    }
-
-    return () => {
-      if (element) {
-        observer.unobserve(element);
-      }
-    };
-  }, [end, suffix, isVisible]);
-
-  useEffect(() => {
-    if (!isVisible) return;
-
-    let startTime: number;
-    let animationFrame: number;
-
-    const animate = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / duration, 1);
-      
-      // Easing function for smooth animation
-      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-      const currentCount = Math.floor(easeOutQuart * end);
-      
-      setCount(currentCount);
-
-      if (progress < 1) {
-        animationFrame = requestAnimationFrame(animate);
-      }
-    };
-
-    animationFrame = requestAnimationFrame(animate);
-
-    return () => {
-      if (animationFrame) {
-        cancelAnimationFrame(animationFrame);
-      }
-    };
-  }, [isVisible, end, duration]);
-
-  return (
-    <div 
-      id={`counter-${end}-${suffix}`}
-      className="text-3xl sm:text-4xl lg:text-5xl font-bold text-emerald-400 mb-2 transform transition-all duration-500 hover:scale-110"
-      style={{
-        transform: isVisible ? 'scale(1)' : 'scale(0.8)',
-        opacity: isVisible ? 1 : 0.5,
-        textShadow: '0 0 20px rgba(52, 211, 153, 0.3)'
-      }}
-    >
-      {count}{suffix}
-    </div>
-  );
-};
 
 const images = [
   { id: 1, src: "/a1.jpg", alt: "Hospital Reception Area", category: "facilities" },
@@ -148,33 +76,26 @@ export default function Gallery() {
             {/* Statistics */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
               <div className="text-center group cursor-pointer">
-                <div className="relative">
-                  <AnimatedCounter end={images.length} duration={2000} />
-                  <div className="absolute inset-0 bg-emerald-400/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-emerald-400 mb-2 transform group-hover:scale-110 transition-all duration-300">
+                  {images.length}
                 </div>
                 <div className="text-sm sm:text-base text-blue-200 font-medium group-hover:text-white transition-colors duration-300">Gallery Images</div>
               </div>
               <div className="text-center group cursor-pointer">
-                <div className="relative">
-                  <AnimatedCounter end={15} suffix="+" duration={2500} />
-                  <div className="absolute inset-0 bg-emerald-400/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-emerald-400 mb-2 transform group-hover:scale-110 transition-all duration-300">
+                  15+
                 </div>
                 <div className="text-sm sm:text-base text-blue-200 font-medium group-hover:text-white transition-colors duration-300">Departments</div>
               </div>
               <div className="text-center group cursor-pointer">
-                <div className="relative">
-                  <AnimatedCounter end={25} suffix="+" duration={3000} />
-                  <div className="absolute inset-0 bg-emerald-400/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-emerald-400 mb-2 transform group-hover:scale-110 transition-all duration-300">
+                  25+
                 </div>
                 <div className="text-sm sm:text-base text-blue-200 font-medium group-hover:text-white transition-colors duration-300">Years Experience</div>
               </div>
               <div className="text-center group cursor-pointer">
-                <div className="relative">
-                  <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-emerald-400 mb-2 transform transition-all duration-500 hover:scale-110 animate-pulse"
-                     style={{ textShadow: '0 0 20px rgba(52, 211, 153, 0.3)' }}>
-                    24/7
-                  </div>
-                  <div className="absolute inset-0 bg-emerald-400/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-emerald-400 mb-2 transform group-hover:scale-110 transition-all duration-300 animate-pulse">
+                  24/7
                 </div>
                 <div className="text-sm sm:text-base text-blue-200 font-medium group-hover:text-white transition-colors duration-300">Emergency Care</div>
               </div>
@@ -205,10 +126,10 @@ export default function Gallery() {
               <button
                 key={category.id}
                 onClick={() => setActiveCategory(category.id)}
-                className={`group flex items-center space-x-3 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 ${
+                className={`group flex items-center space-x-3 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 ${
                   activeCategory === category.id
-                    ? "bg-gradient-to-r from-blue-600 to-emerald-600 text-white shadow-xl scale-105"
-                    : "bg-gray-100 text-gray-700 hover:bg-gray-200 hover:scale-105 shadow-md"
+                    ? "bg-gradient-to-r from-blue-600 to-emerald-600 text-white shadow-xl scale-105 animate-pulse"
+                    : "bg-gray-100 text-gray-700 hover:bg-gradient-to-r hover:from-blue-100 hover:to-emerald-100 hover:shadow-lg shadow-md"
                 }`}
               >
                 <span className="text-xl">{category.icon}</span>
@@ -228,24 +149,22 @@ export default function Gallery() {
       <div className="py-16">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {filteredImages.map((image, idx) => (
+            {filteredImages.map((image) => (
               <div
                 key={image.id}
-                className="group relative bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-500 overflow-hidden transform hover:-translate-y-2 cursor-pointer"
+                className="group relative bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer transform hover:-translate-y-2 hover:scale-105"
                 onClick={() => setSelectedImage(image)}
-                style={{ animationDelay: `${idx * 50}ms` }}
               >
                 <div className="relative aspect-square overflow-hidden">
                   <Image
                     src={image.src}
                     alt={image.alt}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    priority={idx < 8}
                   />
                   
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
                   
                   <div className="absolute top-4 left-4 flex items-center space-x-2">
                     <span className={`px-3 py-1 rounded-full text-xs font-medium ${
@@ -259,13 +178,13 @@ export default function Gallery() {
                 </div>
                 
                 <div className="p-6">
-                  <h3 className="font-semibold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">
+                  <h3 className="font-semibold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors duration-300">
                     {image.alt}
                   </h3>
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-gray-500 capitalize">{image.category}</span>
-                    <div className="w-8 h-8 bg-blue-50 rounded-full flex items-center justify-center group-hover:bg-blue-100 transition-colors">
-                      <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-8 h-8 bg-blue-50 rounded-full flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 transform group-hover:rotate-45">
+                      <svg className="w-4 h-4 text-blue-600 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"/>
                       </svg>
                     </div>
@@ -296,7 +215,6 @@ export default function Gallery() {
                 alt={selectedImage.alt}
                 fill
                 className="object-contain rounded-lg"
-                priority
               />
             </div>
             
