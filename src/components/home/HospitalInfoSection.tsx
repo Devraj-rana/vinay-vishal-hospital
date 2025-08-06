@@ -18,13 +18,21 @@ const checklistRight = [
 ];
 
 const leftVariants = {
-  hidden: { opacity: 0, x: -60 },
-  visible: { opacity: 1, x: 0 }
+  hidden: { opacity: 0, x: -80, scale: 0.95 },
+  visible: { 
+    opacity: 1, 
+    x: 0, 
+    scale: 1,
+  }
 };
 
 const rightVariants = {
-  hidden: { opacity: 0, x: 60 },
-  visible: { opacity: 1, x: 0 }
+  hidden: { opacity: 0, x: 80, scale: 0.95 },
+  visible: { 
+    opacity: 1, 
+    x: 0, 
+    scale: 1,
+  }
 };
 
 const HospitalInfoSection = () => {
@@ -41,7 +49,13 @@ const HospitalInfoSection = () => {
         variants={leftVariants}
         initial="hidden"
         animate={leftInView ? "visible" : "hidden"}
-        transition={{ duration: 0.3, ease: "easeOut" }}
+        transition={{ 
+          duration: 0.8,
+          ease: [0.16, 1, 0.3, 1],
+          type: "spring",
+          stiffness: 100,
+          damping: 20,
+        }}
         className="flex-1"
       >
         <div className="inline-flex items-center bg-blue-100 text-blue-800 px-4 py-2 rounded-full mb-6">
@@ -141,7 +155,14 @@ const HospitalInfoSection = () => {
         variants={rightVariants}
         initial="hidden"
         animate={rightInView ? "visible" : "hidden"}
-        transition={{ duration: 0.3, ease: "easeOut" }}
+        transition={{ 
+          duration: 0.8,
+          ease: [0.16, 1, 0.3, 1],
+          type: "spring",
+          stiffness: 100,
+          damping: 20,
+          delay: 0.2,
+        }}
         className="relative flex-1 flex flex-col items-center"
       >
         <div className="relative">

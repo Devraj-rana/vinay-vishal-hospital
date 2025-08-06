@@ -109,8 +109,8 @@ const HeroSection = () => {
 
   const getAnimationClass = (elementName: string) => {
     return visibleElements.includes(elementName) 
-      ? 'opacity-100 translate-y-0 scale-100' 
-      : 'opacity-0 translate-y-8 scale-95';
+      ? 'opacity-100 translate-y-0 scale-100 transition-all duration-700 ease-out' 
+      : 'opacity-0 translate-y-12 scale-95 transition-all duration-700 ease-out';
   };
 
   return (
@@ -119,7 +119,13 @@ const HeroSection = () => {
         className="relative w-full h-[60vh] sm:h-[70vh] md:h-[80vh] lg:h-screen overflow-hidden"
         initial={{ opacity: 0, scale: 0.98 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.3, ease: "easeOut" }}
+        transition={{ 
+          duration: 0.8, 
+          ease: [0.25, 0.46, 0.45, 0.94],
+          type: "spring",
+          stiffness: 100,
+          damping: 20
+        }}
       >
         {/* Video */}
         <video

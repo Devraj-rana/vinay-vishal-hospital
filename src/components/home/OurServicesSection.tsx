@@ -105,19 +105,24 @@ const containerVariants: Variants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.05,
+      staggerChildren: 0.08,
+      delayChildren: 0.1,
     },
   },
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 60, scale: 0.95 },
   visible: {
     opacity: 1,
     y: 0,
+    scale: 1,
     transition: {
-      duration: 0.3,
-      ease: [0.22, 1, 0.36, 1],
+      duration: 0.7,
+      ease: [0.16, 1, 0.3, 1],
+      type: "spring",
+      stiffness: 100,
+      damping: 15,
     },
   },
 };
@@ -164,24 +169,35 @@ const OurServicesSection = () => {
           {services.map(({ title, description, icon, bgColor, textColor, linkColor }, index) => (
             <motion.div
               key={index}
-              className={`${bgColor} rounded-2xl p-6 sm:p-8 text-left shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer border border-white/50 backdrop-blur-sm relative overflow-hidden group touch-manipulation min-h-[200px] sm:min-h-[220px]`}
+              className={`${bgColor} rounded-2xl p-6 sm:p-8 text-left shadow-lg hover:shadow-2xl transition-all duration-700 cursor-pointer border border-white/50 backdrop-blur-sm relative overflow-hidden group touch-manipulation min-h-[200px] sm:min-h-[220px]`}
               variants={itemVariants}
               whileHover={{
-                y: -8,
+                y: -12,
                 scale: 1.03,
-                boxShadow: "0px 25px 40px -10px rgba(0, 0, 0, 0.15)",
+                boxShadow: "0px 30px 50px -10px rgba(0, 0, 0, 0.2)",
+                transition: {
+                  duration: 0.4,
+                  ease: [0.16, 1, 0.3, 1],
+                  type: "spring",
+                  stiffness: 200,
+                  damping: 20,
+                }
+              }}
+              whileTap={{
+                scale: 0.98,
+                transition: { duration: 0.1 }
               }}
             >
               {/* Gradient overlay on hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out"></div>
               
               {/* Icon */}
-              <div className="text-3xl mb-4 group-hover:scale-110 transition-transform duration-300 relative z-10">
+              <div className="text-3xl mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 ease-out relative z-10">
                 {icon}
               </div>
               
               {/* Title */}
-              <h3 className={`text-lg sm:text-xl font-bold mb-3 ${textColor} leading-tight relative z-10 group-hover:text-opacity-90 transition-all duration-300`}>
+              <h3 className={`text-lg sm:text-xl font-bold mb-3 ${textColor} leading-tight relative z-10 group-hover:text-opacity-90 transition-all duration-500 ease-out`}>
                 {title}
               </h3>
               

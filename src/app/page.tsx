@@ -8,14 +8,14 @@ import OurDoctorsSection from "@/components/home/OurDoctorsSection";
 
 export default function HomePage() {
   return (
-    <>
+    <div className="overflow-hidden">
       <HeroSection />
       <InfoCards />
       <HospitalInfoSection />
       <OurServicesSection />
       <TrackRecordSection />
       <OurDoctorsSection />
-    </>
+    </div>
   );
 }
 

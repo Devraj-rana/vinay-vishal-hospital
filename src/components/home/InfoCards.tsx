@@ -112,7 +112,7 @@ const InfoCards = () => {
                   }
                   return prev
                 })
-              }, index * 50)
+              }, index * 120) // Smoother stagger timing
             })
           } else {
             setVisibleCards([])
@@ -168,11 +168,11 @@ const InfoCards = () => {
               className={`${bgColor} ${borderColor} rounded-2xl p-6 sm:p-8 lg:p-6 border-2 relative overflow-hidden group cursor-pointer transition-all duration-500 hover:scale-105 ${hoverShadow} hover:shadow-2xl hover:-translate-y-2 bg-white/80 backdrop-blur-sm touch-manipulation min-h-[280px] sm:min-h-[320px]
                 ${visibleCards.includes(index) 
                   ? 'opacity-100 translate-y-0 scale-100' 
-                  : 'opacity-0 translate-y-8 scale-95'
+                  : 'opacity-0 translate-y-12 scale-95'
                 }`}
               style={{
-                transition: 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                transitionDelay: visibleCards.includes(index) ? `${index * 150}ms` : '0ms'
+                transition: 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
+                transitionDelay: visibleCards.includes(index) ? `${index * 120}ms` : '0ms'
               }}
             >
               {/* Professional card header with gradient overlay */}

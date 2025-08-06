@@ -82,7 +82,7 @@ const OurDoctorsSection = () => {
                   }
                   return prev;
                 });
-              }, index * 50);
+              }, index * 80); // Increased for smoother stagger
             });
           } else {
             setVisibleElements([]);
@@ -117,8 +117,8 @@ const OurDoctorsSection = () => {
 
   const getAnimationClass = (elementName: string) => {
     return visibleElements.includes(elementName) 
-      ? 'opacity-100 translate-y-0 scale-100' 
-      : 'opacity-0 translate-y-8 scale-95';
+      ? 'opacity-100 translate-y-0 scale-100 transition-all duration-800 ease-out' 
+      : 'opacity-0 translate-y-16 scale-95 transition-all duration-800 ease-out';
   };
 
   return (
